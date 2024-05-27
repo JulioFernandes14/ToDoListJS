@@ -1,11 +1,12 @@
-class Tarefa {
+export class Tarefa {
 
 
     constructor(nome) {
 
         this.nome = nome;
         this.dataCriacao = this.getData();
-        dataConclusao = '';
+        this.dataConclusao = 'Não concluída';
+		this.concluida = false;
 
     }
 

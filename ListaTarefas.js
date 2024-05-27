@@ -1,36 +1,51 @@
-class ListaTarefas {
+export class ListaTarefas {
 
     #lista
 
     constructor() {
-        this.#lista = new Array();
+        this.lista = new Array();
     }
 
     setTarefa(item) {
-        this.#lista.push(item);
+        this.lista.push(item);
     }
 
     getTarefas(painel) {
 
-        this.#lista.forEach((item) => {
+		painel.innerHTML = '';
 
-            let item = document.createElement('div');
-            item.classList('tarefa');
+        this.lista.forEach((item) => {
+
+            let tarefa = document.createElement('div');
+			tarefa.classList = 'tarefa';
 
             let NomeTarefa = document.createElement('div');
-            NomeTarefa.classList('nomeTarefa');
+            NomeTarefa.textContent = item.nome;
+            NomeTarefa.classList = 'nomeTarefa';
 
             let dataCriacao = document.createElement('div');
-            dataCriacao.classList('criacaoTarefa');
+            dataCriacao.textContent = item.dataCriacao;
+            dataCriacao.classList = 'criacaoTarefa';
 
             let dataConclusao = document.createElement('div');
-            dataConclusao.classList('criacaoTarefa');
+            dataConclusao.textContent = item.dataConclusao;
+            dataConclusao.classList = 'conclusaoTarefa';
 
             let BotaoConcluir = document.createElement('div');
-            BotaoConcluir.classList('BotaoConcluir');
+            BotaoConcluir.textContent = '✔️'
+            BotaoConcluir.classList = 'BotaoConcluir';
 
             let BotaoExcluir= document.createElement('div');
-            BotaoExcluir.classList('BotaoExcluir');
+            BotaoExcluir.textContent = '❌';
+            BotaoExcluir.classList = 'BotaoExcluir';
+
+            tarefa.appendChild(NomeTarefa,dataCriacao,dataConclusao,BotaoConcluir,BotaoExcluir);
+            tarefa.appendChild(dataCriacao);
+            tarefa.appendChild(dataConclusao);
+            tarefa.appendChild(BotaoConcluir);
+            tarefa.appendChild(BotaoExcluir);
+			
+			painel.appendChild(tarefa);
 
         });
 
